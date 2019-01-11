@@ -9,8 +9,13 @@ import com.dfm.springcloudservice.model.User;
 
 @Configuration
 public class UserConfig {
+	private List<User> users;
+	
+	public UserConfig() {
+		this.users = createUsersList();
+	}
 
-	public List<User> getUsersList(){
+	private List<User> createUsersList(){
 		List<User> l = new ArrayList<User>();
 		l.add(createUser("1", "Ajith", "Varghese", 40, "Male"));
 		l.add(createUser("2", "John", "Thomas", 34, "Male"));
@@ -19,7 +24,7 @@ public class UserConfig {
 		return(l);
 	}
 	
-	public User createUser(String id, String firstName, String lastName, int age, String gender) {
+	private User createUser(String id, String firstName, String lastName, int age, String gender) {
 		User u = new User();
 		u.setAge(age);
 		u.setEmployeeId(id);
@@ -30,10 +35,14 @@ public class UserConfig {
 	}
 	
 	public User getUser(String id) {
-		User u = getUsersList().stream()
+		User u = this.users.stream()
 							.filter(user -> user.getEmployeeId().equals(id))
 							.findAny()
 			                .orElse(null);
 		return(u);
+	}
+	
+	public List<User> getUsers(){
+		return(this.users);
 	}
 }
