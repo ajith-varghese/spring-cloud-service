@@ -19,4 +19,9 @@ public class UserService {
 	public List<User> getAllUsers(){
 		return(userConfig.getUsers());
 	}
+	
+	public List<User> addUser(User user){
+		userConfig.addUser(user);
+		return(userConfig.getUsers());
+	}
 }
