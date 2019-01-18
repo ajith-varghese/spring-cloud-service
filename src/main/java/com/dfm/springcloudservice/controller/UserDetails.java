@@ -13,6 +13,8 @@ import com.dfm.springcloudservice.config.PropertyConfig;
 import com.dfm.springcloudservice.model.User;
 import com.dfm.springcloudservice.service.UserService;
 
+
+
 @RestController
 public class UserDetails {
 	@Autowired
@@ -35,6 +37,11 @@ public class UserDetails {
 	@GetMapping("/getmessage")
 	String getMessage() {
 		return(config.getMsg());
+	}
+	
+	@GetMapping("/getname")
+	String getInstancename() {
+		return(config.getInstanceName());
 	}
 	
 	@PostMapping("/adduser")

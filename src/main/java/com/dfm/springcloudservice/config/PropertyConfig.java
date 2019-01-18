@@ -7,6 +7,15 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties("spring-could-service")
 public class PropertyConfig {
 	String msg;
+	String instanceName;
+	
+	public String getInstanceName() {
+		return instanceName;
+	}
+
+	public void setInstanceName(String instanceName) {
+		this.instanceName = instanceName;
+	}
 
 	public String getMsg() {
 		return msg;
@@ -15,4 +24,5 @@ public class PropertyConfig {
 	public void setMsg(String msg) {
 		this.msg = msg;
 	}
+	
 }
